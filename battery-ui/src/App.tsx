@@ -58,7 +58,7 @@ function App() {
         </p>
         <LiveValue temp={temperature}/>
         <p className={warning_string}>
-          {`${warning_string}!`}
+          {`${warning_string}`}
         </p>
       </header>
     </div>
