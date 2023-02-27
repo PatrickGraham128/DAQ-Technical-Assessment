@@ -25,7 +25,7 @@ tcpServer.on('connection', (socket) => {
                 }
             }
         } catch(e) {
-            console.error("error: failed to parse message");
+            console.error("error: failed to parse recieved JSON");
         };
 
         websocketServer.clients.forEach(function each(client) {
