@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import LiveValue from './live_value'
-import RedbackLogo from './redback_logo.jpg';
+import RedbackLogo from './redback-logo2.png';
 import './App.css';
 
 function App() {
@@ -34,16 +34,35 @@ function App() {
     };
   }, []);
 
+  let warning_string = '';
+  switch (true) {
+    case (temperature < 20 || temperature > 80):
+      warning_string = 'DANGER';
+      break;
+    case (temperature < 30 || temperature > 70):
+      warning_string = 'WARNING';
+      break;
+    default:
+      warning_string = '';
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
+  <div className="App">
+    <div className="background">
       <img src={RedbackLogo} className="redback-logo" alt="Redback Racing Logo"/>
+    </div>
+    <div className="battery-temperature">
+      <header className="App-header">
         <p className='value-title'>
-          Live Battery Temperature
+          <span className="live">LIVE</span> BATTERY TEMPERATURE:
         </p>
         <LiveValue temp={temperature}/>
+        <p className={warning_string}>
+          {`${warning_string}!`}
+        </p>
       </header>
     </div>
+  </div>
   );
 }
 
